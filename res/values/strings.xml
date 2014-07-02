@@ -4,6 +4,6 @@
     <string name="app_name">Yamba</string>
     <string name="hello_world">Hello world!</string>
     <string name="button_Tweet">Tweet</string>
-    <string name="hint_status">What's going on?</string>
+    <string name="hint_status">What\'s going on?</string>
 
 </resources>
