@@ -30,5 +30,8 @@ public class StatusActivity extends Activity implements OnClickListener {
 		String status = editStatus.getText().toString();
 		System.out.print("aaa");
 		Log.d(TAG, "OnClick with status:" + status);
+		
+		//new PostTask().execute(status);
+		
 	}
 }
