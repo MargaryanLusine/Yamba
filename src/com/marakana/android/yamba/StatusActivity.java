@@ -1,8 +1,11 @@
 package com.marakana.android.yamba;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.AsyncTask;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +23,6 @@ public class StatusActivity extends Activity implements OnClickListener {
 	private EditText editStatus;
 	private Button buttonTweet;
 	private TextView textCount;
-	private int defaultTextColor;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +31,42 @@ public class StatusActivity extends Activity implements OnClickListener {
         
         editStatus = (EditText) findViewById(R.id.editStatus);
         buttonTweet = (Button) findViewById(R.id.buttonTweet);
+        textCount = (TextView) findViewById(R.id.textCount);
         
         buttonTweet.setOnClickListener(this);
+        
+        editStatus.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				int count = 140 - editStatus.length();
+				textCount.setText(Integer.toString(count));
+				
+				// Change the color
+				if (count < 10) {
+					textCount.setTextColor(Color.YELLOW);
+					
+					if (count < 0) {
+						textCount.setTextColor(Color.RED);
+					} 
+				}	
+			}
+        	
+        });
     }
 
 	@Override
