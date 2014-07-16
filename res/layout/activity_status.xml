@@ -25,4 +25,14 @@
         android:hint="@string/hint_status"
         android:inputType="textMultiLine" />
 
+    <TextView
+        android:id="@+id/textCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editStatus"
+        android:layout_alignTop="@+id/buttonTweet"
+        android:layout_marginLeft="16dp"
+        android:text="@string/count" 
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
 </RelativeLayout>
