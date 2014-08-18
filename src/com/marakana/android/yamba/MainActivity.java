@@ -1,15 +1,14 @@
 package com.marakana.android.yamba;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
 public class MainActivity extends Activity {
 
@@ -37,11 +36,17 @@ public class MainActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			startActivity(new Intent(this, SettingsActivity.class));
 			return true;
+		case R.id.action_tweet:
+			startActivity(new Intent(this, StatusActivity.class));
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	/**

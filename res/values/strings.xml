@@ -7,10 +7,11 @@
     <string name="hint_status">What\'s going on?</string>
     <string name="count">140</string>
     <string name="username">Username</string>
-    <string name="username_summary">Username Summary</string>
+    <string name="username_summary">What\'s your username</string>
     <string name="password">Password</string>
-    <string name="password_summary">Password Summary</string>
+    <string name="password_summary">How do you log in?</string>
     <string android:id="@+id/string1" name="action_settings" android:layout_width="wrap_content" android:layout_height="wrap_content">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-
-</resources>
+    <string name="title_activity_main">Yamba</string>
+    <string name="refresh">Refresh</string>
+    <string name="tweet">Tweet</string>
+    <string name="purge">Purge</string></resources>
