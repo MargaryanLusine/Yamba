@@ -14,4 +14,7 @@
     <string name="title_activity_main">Yamba</string>
     <string name="refresh">Refresh</string>
     <string name="tweet">Tweet</string>
-    <string name="purge">Purge</string></resources>
+    <string name="purge">Purge</string>
+    <string name="titlePrefs">Preferences</string>
+    <string name="titleRefresh">Refresh</string>
+</resources>

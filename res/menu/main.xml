@@ -20,10 +20,20 @@
 		android:showAsAction="always"
 		android:title="@string/refresh"/>
 	
-	<item
+<!-- 	<item
 		android:id="@+id/action_purge"
 		android:icon="@android:drawable/ic_menu_delete"
 		android:title="@string/purge">
+	</item> -->
+	
+	<item android:id="@+id/itemPrefs" 
+	      android:title="@string/titlePrefs"
+		  android:icon="@android:drawable/ic_menu_preferences">
+	</item>
+	
+	<item android:title="@string/titleRefresh"
+		  android:id="@+id/itemServiceStart"
+		  android:icon="@android:drawable/ic_menu_rotate">
 	</item>
 
 </menu>
