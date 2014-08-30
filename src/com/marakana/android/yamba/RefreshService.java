@@ -11,6 +11,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,20 +33,19 @@ public class RefreshService extends IntentService {
 		String username = prefs.getString("username", "");
 		String password = prefs.getString("password", "");
 		
+		// check that username and password are not empty
 		if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
 			Toast.makeText(this, "Please update your status and password", Toast.LENGTH_LONG).show();
 		}
 	
 		Log.d(TAG, "onStarted");
-		
-		DBHelper dbHelper = new DBHelper(this);
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		
+	
 		ContentValues values = new ContentValues();
 		
 		YambaClient yambaCloud = new YambaClient(username, password);
 		
 		try {
+			int count = 0;
 			List<Status> timeline = yambaCloud.getTimeline(20);
 			for (Status status:timeline) {
 				values.clear();
@@ -54,7 +54,12 @@ public class RefreshService extends IntentService {
 				values.put(StatusContract.Column.MESSAGE, status.getMessage());
 				values.put(StatusContract.Column.CREATED_AT, status.getCreatedAt().getTime());
 				
-				db.insertWithOnConflict(StatusContract.TABLE, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+				Uri uri = getContentResolver().insert(StatusContract.CONTENT_URI, values);
+				
+				if(uri != null) {
+					count++;
+					Log.d("%:s %s" + status.getUser(), status.getMessage());
+				}
 			}
 			
 		} catch (YambaClientException e) {
