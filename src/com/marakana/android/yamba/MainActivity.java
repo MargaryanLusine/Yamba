@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -17,10 +18,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null) {
+		/*if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
-		}
+		}*/
 	}
 
 	@Override
@@ -43,6 +44,10 @@ public class MainActivity extends Activity {
 			return true;
 		case R.id.action_refresh:
 			startService(new Intent(this, RefreshService.class));
+		case R.id.action_purge:
+			int rows = getContentResolver().delete(StatusContract.CONTENT_URI, null, null);
+			Toast.makeText(this, "Deleted " + rows + " rows", Toast.LENGTH_LONG).show();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		
@@ -52,7 +57,7 @@ public class MainActivity extends Activity {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
+	/*public static class PlaceholderFragment extends Fragment {
 
 		public PlaceholderFragment() {
 		}
@@ -64,6 +69,6 @@ public class MainActivity extends Activity {
 					false);
 			return rootView;
 		}
-	}
+	}*/
 
 }
